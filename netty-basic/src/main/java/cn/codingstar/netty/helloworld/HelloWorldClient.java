@@ -1,5 +1,7 @@
 package cn.codingstar.netty.helloworld;
 
+import cn.codingstar.netty.helloworld.handler.BaseClient1Handler;
+import cn.codingstar.netty.helloworld.handler.BaseClient2Handler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -40,11 +42,16 @@ public class HelloWorldClient {
                             ChannelPipeline pipeline = ch.pipeline();
                             pipeline.addLast("decoder", new StringDecoder());
                             pipeline.addLast("encoder", new StringEncoder());
-                            pipeline.addLast(new HelloWorldClientHandler());
+                            //pipeline.addLast(new HelloWorldClientHandler());
+                            pipeline.addLast(new BaseClient1Handler());
+                            pipeline.addLast(new BaseClient2Handler());
                         }
                     });
 
             ChannelFuture future = bootstrap.connect(host, port).sync();
+
+            future.channel().writeAndFlush("Hello Server , I am client .");
+
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -53,7 +60,7 @@ public class HelloWorldClient {
     }
 
     public static void main(String[] args) {
-        HelloWorldClient client = new HelloWorldClient("127.0.0.1",8090);
+        HelloWorldClient client = new HelloWorldClient("127.0.0.1", 8090);
         client.start();
     }
 }
