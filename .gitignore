@@ -53,4 +53,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 netty-notes.iml
+*/*.iml
 src/test
