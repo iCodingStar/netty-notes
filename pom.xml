@@ -5,7 +5,10 @@
   <groupId>cn.codingstar.netty</groupId>
   <artifactId>netty-notes</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <modules>
+    <module>netty-basic</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>netty-notes</name>
   <url>http://maven.apache.org</url>
