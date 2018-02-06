@@ -55,3 +55,4 @@ fabric.properties
 netty-notes.iml
 */*.iml
 src/test
+*/src/test
