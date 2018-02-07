@@ -37,6 +37,7 @@ public class HeartBeatClient {
 
     public void start() {
         EventLoopGroup group = new NioEventLoopGroup();
+        ChannelFuture future = null;
         try {
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(group)
@@ -51,12 +52,20 @@ public class HeartBeatClient {
                             pipeline.addLast(new HeartBeatClientHandler());
                         }
                     });
-            ChannelFuture future = bootstrap.connect().sync();
+            future = bootstrap.connect().sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            group.shutdownGracefully();
+            //group.shutdownGracefully();
+            if (future != null) {
+                if (future.channel() != null && future.channel().isOpen()) {
+                    future.channel().close();
+                }
+            }
+            System.out.println("准备重新连接...");
+            start();
+            System.out.println("重连成功...");
         }
 
     }
