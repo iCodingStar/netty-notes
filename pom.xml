@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netty.all.version>4.0.12.Final</netty.all.version>
         <junit.version>4.12</junit.version>
+        <protobuf.java.version>2.6.1</protobuf.java.version>
     </properties>
 
     <dependencyManagement>
@@ -26,6 +27,13 @@
                 <artifactId>netty-all</artifactId>
                 <version>${netty.all.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.java.version}</version>
+            </dependency>
+
             <!--for test-->
             <dependency>
                 <groupId>junit</groupId>
