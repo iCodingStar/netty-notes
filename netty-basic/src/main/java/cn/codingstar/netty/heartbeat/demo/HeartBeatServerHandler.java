@@ -1,4 +1,4 @@
-package cn.codingstar.netty.heartbeat;
+package cn.codingstar.netty.heartbeat.demo;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

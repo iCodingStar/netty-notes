@@ -1,4 +1,4 @@
-package cn.codingstar.netty.heartbeat;
+package cn.codingstar.netty.heartbeat.demo;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
