@@ -1,0 +1,2 @@
+## Bug记录
+* 在写好spi后测试的过程中无法根据配置的类实例化相应的服务，开始以为环境配置有问题，但是无论怎么调试都不行，但是有一种想法是正确的，就是ServiceLoader没有找到META-INF/services目录下的文件cn.codingstar.netty.spi.MessageService。那么到底是什么原因呢？想了好久终于察觉到自己创建目录META-INF/services可能是有问题的，原因在于创建这个目录的时候，为了简单，我之间输入目录名META-INF.services。这是一个二级目录啊，虽然你一级一级的创建后，结果显示的一样，但是idea内部处理应该是有区别的，区别在与前者是一个一级目录，目录名为MET虽然只是浪费了十几分钟的时间，还是要注意。A-INF.services,而分级创建则是二级目录META-INF/services。
